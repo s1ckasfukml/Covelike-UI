@@ -309,7 +309,8 @@
   </div>
 
   <script>
-    const API_URL = localStorage.getItem('api_url') || 'http://localhost:8000';
+    const DEFAULT_API = 'https://studies-baseline-rainbow-deliver.trycloudflare.com';
+    const API_URL = localStorage.getItem('api_url') || DEFAULT_API;
     let trackId = null, refId = null, engine = 'seedvc';
     let jobs = [];
     let jobsHash = '';
