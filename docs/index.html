@@ -110,6 +110,7 @@
           <div class="logo-icon">C</div>
           <span>Covelike</span>
         </div>
+        <input type="text" id="api-url" placeholder="API URL" style="margin-top:12px;width:100%;padding:8px 12px;background:var(--bg-tertiary);border:1px solid var(--border-color);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:11px;">
       </div>
       
       <div class="sidebar-content">
@@ -308,10 +309,17 @@
   </div>
 
   <script>
-    const API_URL = 'http://localhost:8000';
+    const API_URL = localStorage.getItem('api_url') || 'http://localhost:8000';
     let trackId = null, refId = null, engine = 'seedvc';
     let jobs = [];
     let jobsHash = '';
+    
+    // API URL setup
+    document.getElementById('api-url').value = API_URL;
+    document.getElementById('api-url').onchange = function() {
+      localStorage.setItem('api_url', this.value);
+      location.reload();
+    };
 
     document.querySelectorAll('.slider').forEach(s => {
       const valEl = document.getElementById(s.id + '-val');
